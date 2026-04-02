@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .cart-summary { background: #f4f4f4; padding: 15px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+    <h1>Book Store Dashboard</h1>
+    <p>Logged in as: <strong>User</strong> | <a href="login.html">Logout</a></p>
+
+    <form id="bookForm">
+        <h3>Available Books</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Add to Cart</th>
+                    <th>Book Title</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" class="book-check" value="10"></td>
+                    <td>HTML Basics</td>
+                    <td>10.00</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="book-check" value="15"></td>
+                    <td>CSS for Beginners</td>
+                    <td>15.00</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="book-check" value="20"></td>
+                    <td>Mastering Git</td>
+                    <td>20.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <h3>Cart Summary</h3>
+            <p>Total Items: <span id="itemCount">0</span></p>
+            <p><strong>Total Price: <span id="totalPrice">0.00</span></strong></p>
+            
+            <button type="button" onclick="alert('Order Placed! Total: ' + document.getElementById('totalPrice').innerText)">Purchase Now</button>
+            <button type="reset" onclick="resetCart()">Clear Cart</button>
+        </div>
+    </form>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.book-check');
+        const totalPriceDisplay = document.getElementById('totalPrice');
+        const itemCountDisplay = document.getElementById('itemCount');
+
+        function updateCart() {
+            let total = 0;
+            let count = 0;
+            checkboxes.forEach(box => {
+                if (box.checked) {
+                    total += parseFloat(box.value);
+                    count++;
+                }
+            });
+            totalPriceDisplay.innerText = total.toFixed(2);
+            itemCountDisplay.innerText = count;
+        }
+
+        checkboxes.forEach(box => {
+            box.addEventListener('change', updateCart);
+        });
+
+        function resetCart() {
+            totalPriceDisplay.innerText = "0.00";
+            itemCountDisplay.innerText = "0";
+        }
+    </script>
+</body>
+</html>
