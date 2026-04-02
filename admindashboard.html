@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f0f2f5; }
+        section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccc; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #eee; }
+        .btn { padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Control Panel</h1>
+    <p>Logged in as: <strong>Administrator</strong> | <a href="login.html">Logout</a></p>
+
+    <!-- 1. ADD NEW BOOKS -->
+    <section>
+        <h3>Add New Book</h3>
+        <form onsubmit="alert('Book added to database!'); return false;">
+            <input type="text" placeholder="Book Title" required>
+            <input type="number" placeholder="Price" required>
+            <button type="submit">Add Book</button>
+        </form>
+    </section>
+
+    <!-- 2. UPDATE INVENTORY -->
+    <section>
+        <h3>Update Inventory</h3>
+        <table>
+            <tr>
+                <th>Book Title</th>
+                <th>Stock Level</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>HTML Basics</td>
+                <td><input type="number" value="50" style="width:50px;"></td>
+                <td><button class="btn" onclick="alert('Stock Updated!')">Update</button></td>
+            </tr>
+            <tr>
+                <td>CSS for Beginners</td>
+                <td><input type="number" value="30" style="width:50px;"></td>
+                <td><button class="btn" onclick="alert('Stock Updated!')">Update</button></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- 3. PROCESS ORDERS -->
+    <section>
+        <h3>Pending Orders</h3>
+        <table>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>#1001</td>
+                <td>Rohit</td>
+                <td style="color:orange;">Pending</td>
+                <td><button class="btn" onclick="alert('Order Processed!')">Approve</button></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- 4. GENERATE SALES REPORT -->
+    <section>
+        <h3>Sales Report</h3>
+        <p>Total Revenue: <strong>450.00</strong></p>
+        <p>Books Sold: <strong>22</strong></p>
+        <button onclick="alert('Downloading Sales Report PDF...')">Generate CSV Report</button>
+    </section>
+
+</body>
+</html>
